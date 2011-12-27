@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>The Incredible Expanding Box</title>
+  
+  <style>
+    body, p, h1 {
+      margin: 0;
+      padding: 0;
+      color: rgba(255, 255, 255, .4);
+    }
+    .container {
+      width: 940px;
+      margin: 20px auto;
+      font-family: Helvetica;
+    }
+    
+    .info-box {
+      background-color: rgba(0, 0, 0, .5);
+      padding: 10px;
+    }
+    
+    .teaser {
+      margin-bottom: 10px;
+    }
+    
+    .details {
+      background-color: rgba(0, 0, 0, .6);
+      height: 150px;
+    }
+    
+    p {
+      padding: 10px;
+    }
+    
+    .info-box.collapsed .details, .details p {
+      display: none;
+    }
+    
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="info-box collapsed">
+      <h1>Enim sausage chuck, biltong proident jowl</h1>
+      <p class="teaser">This is the short version of the content. <br> <a href="#">Show Details</a></p>
+      <div class="details">
+        <p>Kielbasa ground round pork loin, pastrami andouille capicola turducken. Short loin turducken t-bone, filet mignon spare ribs chuck fatback beef short ribs biltong pig bresaola pancetta tri-tip. Pancetta kielbasa drumstick, cow hamburger fatback boudin tenderloin short ribs. Beef meatball jowl, ribeye turkey brisket ham hock pork loin frankfurter short loin tongue. Ribeye hamburger meatball, turkey shank biltong bacon flank chuck. Pastrami shankle pork chop ribeye chicken, sausage t-bone turkey pork belly bacon boudin brisket ham pork chuck. Frankfurter beef strip steak salami flank fatback.</p>
+      </div>
+    </div>
+  </div>
+  
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $("a").click(function() {
+        console.log("click");
+        if($(".details").is(":visible")) {
+          $(".details p").fadeOut('slow', function() {
+            $(".details").slideUp();
+          });
+          $("a").text('Show Details')
+        } 
+        else {
+          $("details p").hide();
+          $(".details").slideDown(function() {
+          console.log("expanded");
+          $(".details p").fadeIn();
+        });
+        $("a").text('Hide Details')
+        }
+      })
+    }); //end doc ready
+  </script>
+</body>
+</html>
