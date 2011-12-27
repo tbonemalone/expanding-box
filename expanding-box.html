@@ -55,19 +55,20 @@
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script>
     $(document).ready(function() {
+      var details = $('.details');
+      var detailsText = $('.details p');
       $("a").click(function() {
-        console.log("click");
-        if($(".details").is(":visible")) {
-          $(".details p").fadeOut('slow', function() {
-            $(".details").slideUp();
+        if($(details).is(":visible")) {
+          $(detailsText).fadeOut('slow', function() {
+            $(details).slideUp();
           });
           $("a").text('Show Details')
         } 
         else {
-          $("details p").hide();
-          $(".details").slideDown(function() {
+          $(detailsText).hide();
+          $(details).slideDown(function() {
           console.log("expanded");
-          $(".details p").fadeIn();
+          $(detailsText).fadeIn();
         });
         $("a").text('Hide Details')
         }
