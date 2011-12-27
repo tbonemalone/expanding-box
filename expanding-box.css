@@ -1,0 +1,42 @@
+body, p, h1 {
+  margin: 0;
+  padding: 0;
+  color: rgba(255, 255, 255, .4);
+}
+
+.details p {
+  padding: 10px;
+  color: rgba(255, 255, 255, 0);
+	-webkit-transition: color 2s;
+}
+
+.container {
+  width: 940px;
+  margin: 20px auto;
+  font-family: Helvetica;
+}
+
+#info-box {
+  background-color: rgba(0, 0, 0, .5);
+  padding: 10px;
+}
+
+.teaser {
+  margin-bottom: 10px;
+}
+
+.details {
+  background-color: rgba(0, 0, 0, .6);
+	height: 0;
+	-webkit-transition: height 2s;
+}
+
+/* the Animation using CSS Transitions*/
+
+.expanded .details {
+	height: 150px;
+}
+
+.expanded .details p {
+	color: rgba(255, 255, 255, .8);
+}
