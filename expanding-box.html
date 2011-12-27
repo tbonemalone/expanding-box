@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>The Incredible Expanding Box</title>
   <link rel="stylesheet" href="expanding-box.css">
+  <script src="modernizr-2.0.6.js"></script>
 </head>
 <body>
   <div class="container">
@@ -19,38 +20,42 @@
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script>
     $(document).ready(function() {
-      var infoBox = $("#info-box");
-
-      $("a").click(function() {
-        if($(infoBox).hasClass('expanded')) {
-          $(infoBox).removeClass('expanded');
-          $(".more").text('Show Details');
-        }
-        else {
-          $(infoBox).addClass('expanded');
-          $(".more").text('Hide Details');
-        }
-      });
       
-      // jQuery Fallback if CSS transitions aren't supported
-      // var details = $('.details');
-      // var detailsText = $('.details p');
-      // 
-      // $("a").click(function() {
-      //   if($(details).is(":visible")) {
-      //     $(detailsText).fadeOut('slow', function() {
-      //       $(details).slideUp();
-      //     });
-      //     $("a").text('Show Details')
-      //   } 
-      //   else {
-      //     $(detailsText).hide();
-      //     $(details).slideDown(function() {
-      //     $(detailsText).fadeIn();
-      //   });
-      //   $("a").text('Hide Details')
-      //   }
-      // })
+      if(Modernizr.csstransitions) {
+        var infoBox = $("#info-box");
+
+        $("a").click(function() {
+          if($(infoBox).hasClass('expanded')) {
+            $(".more").text('Show Details');
+            $(infoBox).removeClass('expanded');
+          }
+          else {
+            $(".more").text('Hide Details');
+            $(infoBox).addClass('expanded');
+          }
+        });
+      }
+      else {
+        // jQuery Fallback if CSS transitions aren't supported
+        var details = $('.details');
+        var detailsText = $('.details p');
+        
+        $("a").click(function() {
+          if($(details).is(":visible")) {
+            $(detailsText).fadeOut('slow', function() {
+              $(details).slideUp();
+            });
+            $("a").text('Show Details')
+          } 
+          else {
+            $(detailsText).hide();
+            $(details).slideDown(function() {
+              $(detailsText).fadeIn();
+            });
+            $("a").text('Hide Details')
+          }
+        })
+      }
     }); //end doc ready
   </script>
 </body>
